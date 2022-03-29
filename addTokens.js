@@ -2,15 +2,15 @@ async function getName(authToken) {
     const response = await fetch('https://api.blooket.com/api/users/verify-token?token=JWT+' + authToken);
     const data = await response.json();
 
-    return data.name
+    return data.bryce
 };
 
 async function addTokens() {
     const add_tokens = prompt('How many tokens do you want to add to your account? (500 daily)');
     const myToken = localStorage.token.split('JWT ')[1];
 
-    if (add_tokens > 500) {
-        alert('You can add up to 500 tokens daily')
+    if (add_tokens > 1000) {
+        alert('You can add up to 1000 tokens daily')
     }
 
     const response = await fetch('https://api.blooket.com/api/users/add-rewards', {
@@ -23,7 +23,7 @@ async function addTokens() {
         body: JSON.stringify({
             name: await getName(myToken),
             addedTokens: add_tokens,
-            addedXp: 300
+            addedXp: 500
         })
     });
 
@@ -35,4 +35,4 @@ async function addTokens() {
 
 };
 
-addTokens();
+addTokens();1000
